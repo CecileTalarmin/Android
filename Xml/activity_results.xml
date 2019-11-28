@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_activity"
+    tools:context=".MainActivity"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navbar"
+            android:gravity="left"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimaryBlue">
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                android:src="@mipmap/ic_launcher_foreground"
+                android:visibility="visible"
+
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/nomApp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Snowtam"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="82px"
+                android:textColor="@color/colorPrimaryDark"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/aeroport"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15sp" >
+
+            <LinearLayout
+                android:id="@+id/nom_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/nomAeroport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="50sp"
+                    android:text="ENPL"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="0dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:textSize="20sp"
+                    android:text="19/11/2019"
+                    android:layout_marginBottom="10sp"
+                    android:layout_marginTop="0dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:gravity="center_horizontal"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pistes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/piste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PISTES"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="25sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="25sp"/>
+                <Button
+                    android:id="@+id/piste_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Piste 1"
+                    android:background="@drawable/bouton_style"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBackground"
+                    android:layout_margin="10sp"
+                    android:onClick="chargerPiste"/>
+                <Button
+                    android:id="@+id/piste_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Piste 2"
+                    android:background="@drawable/bouton_style"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBackground"
+                    android:layout_margin="10sp"
+                    android:onClick="chargerPiste"/>
+            </LinearLayout>
+            <com.mapbox.mapboxsdk.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                mapbox:mapbox_cameraTargetLat="48.0191"
+                mapbox:mapbox_cameraTargetLng="0.1578"
+                mapbox:mapbox_cameraZoom="12"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

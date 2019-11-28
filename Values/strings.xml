@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SnowtamResearch</string>
+
+    <string name="logo">SNOWTAM Research</string>
+    <string name="msg_consigne">Entrer les codes OACI des aéroports :</string>
+    <string name="research_btn">Rechercher</string>
+    <string name="msg_done">Code(s) OACI enregistré(s) !</string>
+
+    <string name="warning_msg">Saisie incorrecte...</string>
+
+    <string name="loading">Recherche des snowtams en cours ...</string>
+
+
+</resources>
