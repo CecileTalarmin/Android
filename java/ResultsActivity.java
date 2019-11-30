@@ -1,63 +1,62 @@
 package com.example.snowtam_research;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 
-import androidx.appcompat.app.AppCompatActivity;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
-import androidx.annotation.NonNull;
+import java.util.ArrayList;
 
-import android.view.View;
-import android.widget.Toast;
-
-
-public class ResultsActivity extends AppCompatActivity {
+public class ResultsActivity extends PagerAdapter {
 
     private ArrayList<String> oaciList;
-    private TextView text1, text2, text3, text4;
-    private String oaci1, oaci2, oaci3, oaci4;
+    private TextView text1;
     private MapView mapView;
+    private Context context;
+    private Bundle savedInstanceState;
+    private LayoutInflater inflater;
+    private View view;
 
+    public ResultsActivity(Context context, Bundle savedInstanceState, ArrayList<String> oaci_list) {
+        this.context = context;
+        this.savedInstanceState = savedInstanceState;
+        this.oaciList = oaci_list;
+
+        Mapbox.getInstance(context, "pk.eyJ1IjoiY2VjaWxldGFsYXJtaW4iLCJhIjoiY2szOGpzN3Z3MDhjNzNobmNoZjkya2lxciJ9.OaBymLlD-Gr2vi_TBT_ucQ");
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Mapbox.getInstance(this, "pk.eyJ1IjoiY2VjaWxldGFsYXJtaW4iLCJhIjoiY2szOGpzN3Z3MDhjNzNobmNoZjkya2lxciJ9.OaBymLlD-Gr2vi_TBT_ucQ");
-        setContentView(R.layout.activity_results);
+    public int getCount() {
+        return oaciList.size();
+    }
 
-        text1 = (TextView) findViewById(R.id.nomAeroport);
-        /*text2 = (TextView) findViewById(R.id.code2);
-        text3 = (TextView) findViewById(R.id.code3);
-        text4 = (TextView) findViewById(R.id.code4);*/
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return (view==(LinearLayout)object);
+    }
 
-        Intent intent = getIntent();
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        this.view = inflater.inflate(R.layout.activity_results,container,false);
+        text1 = (TextView) view.findViewById(R.id.nomAeroport);
+        text1.setText(oaciList.get(position));
 
-        oaci1 = intent.getStringExtra("OACI_1");
-        oaci2 = intent.getStringExtra("OACI_2");
-        oaci3 = intent.getStringExtra("OACI_3");
-        oaci4 = intent.getStringExtra("OACI_4");
-
-        if(!oaci1.isEmpty())
-            text1.setText(oaci1);
-        if(!oaci2.isEmpty())
-            text2.setText(oaci2);
-        if(!oaci3.isEmpty())
-            text3.setText(oaci3);
-        if(!oaci4.isEmpty())
-            text4.setText(oaci4);
-
-        mapView = findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
+        mapView = view.findViewById(R.id.mapView);
+        mapView.onCreate(this.savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
@@ -70,52 +69,13 @@ public class ResultsActivity extends AppCompatActivity {
                 });
             }
         });
-    }
 
-    // Add the mapView lifecycle to the activity's lifecycle methods
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
+        container.addView(view);
+        return view;
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mapView.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapView.onSaveInstanceState(outState);
-    }
-
-    public void chargerPiste(View view){
-        Toast.makeText(this, "Bouton cliqué", Toast.LENGTH_LONG).show();
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((LinearLayout)object);
     }
 }
