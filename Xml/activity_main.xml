@@ -35,7 +35,9 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="20sp"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:id="@+id/oaciCode1"
@@ -51,7 +53,10 @@
                 android:textAllCaps="true"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:maxLength="4"
-                android:inputType="textCapCharacters"/>
+                android:inputType="textCapCharacters"
+                android:clickable="true"
+                android:cursorVisible="true"
+                />
             <ImageButton
                 android:id="@+id/addImgBtn1"
                 android:layout_width="40sp"

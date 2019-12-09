@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SnowtamResearch</string>
+
+    <string name="logo">SNOWTAM Research</string>
+    <string name="msg_consigne">Entrez les codes OACI des aéroports :</string>
+    <string name="research_btn">Rechercher</string>
+
+    <string name="warning_msg_len">Saisie incorrecte...</string>
+    <string name="warning_msg_exist">Code OACI inexistant</string>
+
+    <string name="loading">Recherche des Snowtam en cours ...</string>
+    <string name="noSnowtamMsg">Pas de Snowtam disponible pour le moment</string>
+    <string name="noTimeDate">Pas de date à afficher</string>
+
+    <string name="msgDate">Snowtam mis à jour le : </string>
+    <string name="decodeBtn">Snowtam</string>
+    <string name="city">Aéroport de </string>
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SnowtamResearch</string>
+
+    <string name="logo">SNOWTAM Research</string>
+    <string name="msg_consigne">Enter the ICAO codes of the airports: </string>
+    <string name="research_btn">Research</string>
+
+    <string name="warning_msg_len">Wrong entry...</string>
+    <string name="warning_msg_exist">ICAO code non-existent </string>
+
+    <string name="loading">Search for snowtams in progress...</string>
+    <string name="noSnowtamMsg">No Snowtam currently available</string>
+    <string name="noTimeDate">No date time to print</string>
+
+    <string name="msgDate">Snowtam updated on: </string>
+    <string name="decodeBtn">Snowtam</string>
+    <string name="city">Airport of </string>
+
+</resources>

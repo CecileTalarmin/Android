@@ -1,5 +1,6 @@
 package com.example.snowtam_research;
 
+import android.content.Context;
 import android.util.Log;
 
 public class Snowtam {
@@ -7,27 +8,28 @@ public class Snowtam {
     private String json_str;
     private String oaci_code;
     private String timedate;
+    private Aeroport airport;
+
+    //for logging
     private static String TAG = "PARSER";
 
-    Snowtam(String json, String oaci){
+    Snowtam(String json, String oaci, Context context){
+        this.airport = new Aeroport(oaci, context);
         this.json_str = json;
         this.oaci_code = oaci;
 
         String[] json_splitted = json_str.split("\n");
-        for(int i = 0; i < json_splitted.length; i++) {
-            Log.i(TAG,json_splitted[i]);
-        }
-
-        //field A
-        //oaci_code = json_splitted[2].substring(3);
-        //Log.i(TAG,  oaci_code);
 
         //field B
-        String dateToParse = json_splitted[3].substring(3,11); //ex: 11270246
-        String[] date_array = splitStringEvery(dateToParse, 2);
-        String date = date_array[1] + "/" + date_array[0];
-        String hour = date_array[2] + "h" + date_array[3];
-        this.timedate = date + " " + hour;
+        if(json_str.equals(context.getResources().getString(R.string.noSnowtamMsg))) {
+            timedate = context.getResources().getString(R.string.noTimeDate);
+        } else {
+            String dateToParse = json_splitted[3].substring(3,11); //ex: 11270246
+            String[] date_array = splitStringEvery(dateToParse, 2);
+            String date = date_array[1] + "/" + date_array[0];
+            String hour = date_array[2] + "h" + date_array[3];
+            this.timedate = date + " " + hour;
+        }
         Log.i(TAG, timedate);
 
     }
@@ -46,5 +48,13 @@ public class Snowtam {
         result[lastIndex] = s.substring(j);
 
         return result;
+    }
+
+    public Aeroport getAirport(){
+        return this.airport;
+    }
+
+    public String getTimedate(){
+        return this.timedate;
     }
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_activity"
-    tools:context=".DisplayResultsActivity"
+    tools:context=".Display_Snowtam"
     android:background="@color/colorBackground">
 
     <LinearLayout
@@ -56,7 +56,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/codeAeroport"
+                    android:id="@+id/codeAeroport2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="50sp"
@@ -66,7 +66,7 @@
                     android:gravity="center"/>
 
                 <TextView
-                    android:id="@+id/nomAeroport"
+                    android:id="@+id/nomAeroport2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date"
@@ -86,67 +86,40 @@
                 android:orientation="horizontal">
             </LinearLayout>
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/msgDate"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp"/>
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="03/12 15h46"
-                        android:layout_marginLeft="10sp"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="15sp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
-                        android:id="@+id/piste_1"
-                        android:layout_width="250sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/decodeBtn"
-                        android:background="@drawable/bouton_style"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorBackground"
-                        android:layout_margin="10sp"
-                        android:onClick="showCodedSnowtam"/>
-                    <ImageButton
-                        android:layout_width="50sp"
-                        android:layout_height="50sp"
-                        android:onClick="agrandirMap"
-                        android:src="@drawable/maximize"
-                        android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/colorBackground"/>
-
-                </LinearLayout>
-                <com.mapbox.mapboxsdk.maps.MapView
-                    android:id="@+id/mapView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    mapbox:mapbox_cameraTargetLat="48.0191"
-                    mapbox:mapbox_cameraTargetLng="0.1578"
-                    mapbox:mapbox_cameraZoom="12"/>
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/codedSnowtam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20sp"
+                        android:layout_gravity="center"
+                        android:text="SNOWTAM décodé"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15sp"/>
 
+                    <ImageButton
+                        android:id="@+id/backButton"
+                        android:layout_width="60sp"
+                        android:layout_height="60sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:background="@color/colorBackground"
+                        android:src="@drawable/back_button"
+                        android:layout_margin="10sp"
+                        android:onClick="back"/>
+
+                </LinearLayout>
+
+            </ScrollView>
 
         </LinearLayout>
 
